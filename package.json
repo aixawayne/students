@@ -1,0 +1,25 @@
+{
+  "name": "students",
+  "version": "1.0.0",
+  "description": "Technical challenge for Acamica",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/aixawayne/students.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/aixawayne/students/issues"
+  },
+  "homepage": "https://github.com/aixawayne/students#readme",
+  "dependencies": {
+    "@hapi/joi": "^17.1.1",
+    "express": "^4.17.1",
+    "joi": "^14.3.1"
+  }
+}
