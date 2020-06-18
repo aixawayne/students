@@ -4,7 +4,7 @@ const Joi = require('joi');
 
 
 app.use(express.json()); //reconocer los objetos como json
-//app.use('/public', express.static('views')); 
+app.use('/public', express.static('views')); 
 
 const port = process.env.PORT || 5001; //process.env es una variable global injectada por node, aca seteamos el puerto
 app.listen(port, ()=> console.log(`en puerto ${port}...`));
