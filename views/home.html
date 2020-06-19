@@ -21,64 +21,65 @@
           <div class="item">
             <p>Name<span class="required">*</span></p>
             <div class="name-item">
-              <input type="text" name="name" placeholder="First" v-model="name" required/>
-              <input type="text" name="last" placeholder="Last" required/>
+              <input type="text" name="name" placeholder="First" v-model="student.name" required/>
+              <input type="text" name="last" placeholder="Last"  v-model="student.lastname" required/>
             </div>
           </div>
           <div class="contact-item">
             <div class="item">
               <p>Email<span class="required">*</span></p>
-              <input type="text" name="email" required/>
+              <input type="text" name="email" v-model="student.email" required/>
             </div>
             <div class="item">
               <p>Phone<span class="required">*</span></p>
-              <input type="text" name="phone" placeholder="(xxxx) xxxx - xxxx" required/>
+              <input type="text" name="phone" placeholder="(xxxx) xxxx - xxxx" v-model="student.phone" required/>
             </div>
           </div>
           <div class="career-item">
             <div class="item" name="career">
               <p>Career<span class="required">*</span></p>
-              <select required>
-                <option value="1">Full Stack Development</option>
-                <option value="2">UX/UI Design</option>
-                <option value="3">Data Science</option>
-                <option value="4">Front-End with React</option>
+              <select v-model="student.selected" required>
+                <option value="FullStack">Full Stack Development</option>
+                <option value="UXUI">UX/UI Design</option>
+                <option value="DataS">Data Science</option>
+                <option value="FrontReact">Front-End with React</option>
               </select>
+              
             </div>
             <div class="item">
               <p>Date of Birth<span class="required">*</span></p>
-              <input type="date" name="bdate" required/>
+              <input type="date" name="bdate" v-model="student.bdate" required/>
               <i class="fas fa-calendar-alt"></i>
             </div>
           </div>
           <div class="contact-item">
             <div class="item">
               <p>Country<span class="required">*</span></p>
-              <input type="text" name ="country" required/>
+              <input type="text" name ="country" v-model="student.country" required/>
             </div>
             <div class="item">
               <p>City<span class="required">*</span></p>
-              <input type="text" name="city" required/>
+              <input type="text" name="city" v-model="student.city" required/>
             </div>
           </div>
           <div class="question">
             <p>Payment Method<span class="required">*</span></p>
             <div class="question-answer" name="payment">
               <div>
-                <input type="radio" value="none" id="radio_1" name="status" required/>
-                <label for="radio_1" class="radio"><span>Credit Card</span></label>
+                <input type="radio" value="Credit" id="credit" name="status" v-model="student.picked" required/>
+                <label for="credit" class="radio"><span>Credit Card</span></label>
               </div>
               <div>
-                <input type="radio" value="none" id="radio_2" name="status" required/>
-                <label for="radio_2" class="radio"><span>Debit Card</span></label>
+                <input type="radio" value="Debit" id="debit" name="status" v-model="student.picked" required/>
+                <label for="debit" class="radio"><span>Debit Card</span></label>
               </div>
               <div>
-                <input type="radio" value="none" id="radio_3" name="status" required/>
-                <label for="radio_3" class="radio"><span>Cash</span></label>
+                <input type="radio" value="Cash" id="cash" name="status" v-model="student.picked" required/>
+                <label for="cash" class="radio"><span>Cash</span></label>
               </div>
               <div>
-                <input type="radio" value="none" id="radio_4" name="status" required/>
-                <label for="radio_4" class="radio"><span>Transfer</span></label>
+                <input type="radio" value="Transfer" id="transfer" name="status" v-model="student.picked" required/>
+                <label for="transfer" class="radio"><span>Transfer</span></label>
               </div>
             </div>
           </div>
@@ -96,14 +97,24 @@
 var app = new Vue({
   el: '#app',
   data: {
-    name: ''
+    student: {
+    name: '',
+    lastname: '',
+    email: '',
+    phone: '',
+    selected: '',
+    bdate: '',
+    country: '',
+    city: '',
+    picked: ''
+    }
   },
 
   methods: {
 
    greet: function (event) {
       // this inside methods point to the Vue instance
-      alert('Hello ' + this.name + '!')
+      alert(this.student.name + this.student.lastname + this.student.email + this.student.phone + this.student.selected + this.student.bdate + this.student.country + this.student.city + this.student.picked)
       // event is the native DOM event
       alert(event.target.tagName)
     }
