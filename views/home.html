@@ -13,7 +13,7 @@
     <div id="app">
 
       <div class="testbox">
-        <form action="/">
+        <form name="testform" action="/">
           <div class="banner">
             <h1>Payment Form</h1>
           </div>
@@ -21,7 +21,7 @@
           <div class="item">
             <p>Name<span class="required">*</span></p>
             <div class="name-item">
-              <input type="text" name="name" placeholder="First" required/>
+              <input type="text" name="name" placeholder="First" v-model="name" required/>
               <input type="text" name="last" placeholder="Last" required/>
             </div>
           </div>
@@ -96,15 +96,15 @@
 var app = new Vue({
   el: '#app',
   data: {
-    name: 'Vue.js'
+    name: ''
   },
 
   methods: {
 
    greet: function (event) {
-      // `this` inside methods point to the Vue instance
+      // this inside methods point to the Vue instance
       alert('Hello ' + this.name + '!')
-      // `event` is the native DOM event
+      // event is the native DOM event
       alert(event.target.tagName)
     }
     }
