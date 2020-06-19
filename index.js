@@ -44,4 +44,9 @@ app.get('/api/students/:id', (req,res) =>{
 
 })
 
+app.post('/api/students', async (req, res) => {
+	console.log('llego', req.body);
+	res.send();
+})
+
 

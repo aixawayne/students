@@ -94,6 +94,25 @@
 
     <script>
 
+      async function sendStudent(estudiante) {
+
+      // paso 1: transformar el objeto en algo que se pueda mandar al server (un string).
+      let body = JSON.stringify(estudiante);
+
+      // paso 2: configuración del fetch
+      let opts = {
+        method: 'POST', // method => por default es GET queremos POST
+        body: body, // body => el objeto estudiante encodeado en paso 1
+        headers: {
+          'Accept': 'application/json', // lo que recibo
+          'Content-Type': 'application/json' // lo que mando
+        }
+      };
+
+      // paso 3: enviar request.
+      return fetch('/api/students', opts);
+    }
+
 var app = new Vue({
   el: '#app',
   data: {
@@ -112,12 +131,10 @@ var app = new Vue({
 
   methods: {
 
-   greet: function (event) {
-      // this inside methods point to the Vue instance
-      alert(this.student.name + this.student.lastname + this.student.email + this.student.phone + this.student.selected + this.student.bdate + this.student.country + this.student.city + this.student.picked)
-      // event is the native DOM event
-      alert(event.target.tagName)
-    }
+   greet: async function (event){
+    sendStudent(this.student);
+   }
+
     }
 })
 
