@@ -12,11 +12,11 @@ app.listen(port, ()=> console.log(`en puerto ${port}...`));
 
 const students = [
 
-{id: 1, name: 'Aixa', last:'Halac', email:'aixa@gmail.com', phone:'111111', career: 2, bdate: '020119991', country:'arg', city:'bsas', payment:'credit', installments:3},
+{name: 'Aixa', lastname:'Halac', email:'aixa@gmail.com', phone:'111111', payment: 'credit3', bdate: '1111-11-11', country:'arg', city:'bsas', career:'frontreact'},
 
-{id: 2, name: 'Juan', last:'Costa', email:'juan@gmail.com', phone:'22222', career: 2, bdate: '31051989', country:'arg', city:'cordoba', payment:'debit', installments:0},
+{name: 'Juan', lastname:'Costa', email:'juan@gmail.com', phone:'111111', payment: 'cash', bdate: '1111-11-11', country:'arg', city:'bsas', career:'datascience'},
 
-{id: 3, name: 'Pablo', last:'Fernandez', email:'pablo@gmail.com', phone:'33333', career: 1, bdate: '02061992', country:'arg', city:'la plata', payment:'cash', installments:0}
+{name: 'Pablo', lastname:'Fernandez', email:'pabo@gmail.com', phone:'111111', payment: 'debit', bdate: '1111-11-11', country:'arg', city:'bsas', career:'frontreact'},
 ]
 
 
