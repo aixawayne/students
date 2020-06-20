@@ -95,7 +95,7 @@
           
 
           
-          <button class='btn-success' v-on:click="greet">Send</button>
+          <button class='btn-success' v-on:click="send">Send</button>
         </form>
       </div>
     </div>  
@@ -119,6 +119,7 @@
 
       // paso 3: enviar request.
       return fetch('/api/students', opts);
+
     }
 
 var app = new Vue({
@@ -140,8 +141,11 @@ var app = new Vue({
 
   methods: {
 
-   greet: async function (event){
+   send: async function (event){
     sendStudent(this.student);
+    if (sendStudent) {
+        alert("Student successfully added")
+      }
    },
 
    displayInstallments: function() {
