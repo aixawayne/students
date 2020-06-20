@@ -66,19 +66,27 @@
             <p>Payment Method<span class="required">*</span></p>
             <div class="question-answer" name="payment">
               <div>
-                <input type="radio" value="Credit" id="credit" name="status" v-model="student.picked" required/>
+                <input type="radio" value="Credit" id="credit" name="status" v-model="student.picked" @click="displayInstallments()" required/>
                 <label for="credit" class="radio"><span>Credit Card</span></label>
               </div>
+                    <div class="installments" v-show="showInstallments">
+                      <input type="radio" value="1" id="1" name="status" v-model="student.picked" required/>
+                      <label for="1" class="radio"><span>1</span></label>
+                      <input type="radio" value="3" id="3" name="status" v-model="student.picked" required/>
+                      <label for="3" class="radio"><span>3</span></label>
+                      <input type="radio" value="6" id="6" name="status" v-model="student.picked" required/>
+                      <label for="6" class="radio"><span>6</span></label>
+                    </div>
               <div>
-                <input type="radio" value="Debit" id="debit" name="status" v-model="student.picked" required/>
+                <input type="radio" value="Debit" id="debit" name="status" v-model="student.picked" @click="hideInstallments()" required/>
                 <label for="debit" class="radio"><span>Debit Card</span></label>
               </div>
               <div>
-                <input type="radio" value="Cash" id="cash" name="status" v-model="student.picked" required/>
+                <input type="radio" value="Cash" id="cash" name="status" v-model="student.picked" @click="hideInstallments()" required/>
                 <label for="cash" class="radio"><span>Cash</span></label>
               </div>
               <div>
-                <input type="radio" value="Transfer" id="transfer" name="status" v-model="student.picked" required/>
+                <input type="radio" value="Transfer" id="transfer" name="status" v-model="student.picked" @click="hideInstallments()" required/>
                 <label for="transfer" class="radio"><span>Transfer</span></label>
               </div>
             </div>
@@ -126,16 +134,30 @@ var app = new Vue({
     country: '',
     city: '',
     picked: ''
-    }
+    },
+     showInstallments: false
   },
 
   methods: {
 
    greet: async function (event){
     sendStudent(this.student);
-   }
+   },
+
+   displayInstallments: function() {
+      
+      this.showInstallments= true
+
+    },
+
+    hideInstallments: function() {
+      
+      this.showInstallments= false
 
     }
+  }
+
+
 })
 
 
