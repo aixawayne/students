@@ -13,11 +13,18 @@
     <div id="app">
 
       <div class="testbox">
+
+
         <form name="testform" action="/">
+
+          <div class="addstudent" v-show="showForm">
           <div class="banner">
             <h1>Payment Form</h1>
           </div>
           <p class="top-info">Thank you for your interest in studying with us. Please complete the form below.</p>
+          
+
+          
           <div class="item">
             <p>Name<span class="required">*</span></p>
             <div class="name-item">
@@ -91,11 +98,26 @@
               </div>
             </div>
           </div>
+          <button class='btn-success' v-on:click="send">Send</button>
+          <button class='btn-success' @click="displayList()">View List</button>
+          </div>
+
+          <div class ="showlist" v-show="showList">
+            <div class="banner">
+            <h1>Student List</h1>
+          </div>
+          <p class="top-info">List of registered students</p>
+
+              
+            <p>lista</p>
+            
           
+          <button class='btn-success' @click="addStudent()">Add Student</button>
+          </div>
           
 
           
-          <button class='btn-success' v-on:click="send">Send</button>
+          
         </form>
       </div>
     </div>  
@@ -136,7 +158,9 @@ var app = new Vue({
     city: '',
     picked: ''
     },
-     showInstallments: false
+     showInstallments: false,
+     showList: false,
+     showForm: true 
   },
 
   methods: {
@@ -158,7 +182,22 @@ var app = new Vue({
       
       this.showInstallments= false
 
+    },
+
+    displayList: function() {
+      
+      this.showList= true,
+      this.showForm= false
+
+    },
+
+    addStudent: function() {
+      
+      this.showList= false,
+      this.showForm= true
+
     }
+
   }
 
 
