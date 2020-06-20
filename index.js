@@ -45,8 +45,10 @@ app.get('/api/students/:id', (req,res) =>{
 })
 
 app.post('/api/students', async (req, res) => {
-	console.log('llego', req.body);
+	const student = req.body;
+	students.push(student);
 	res.send();
+	console.log('llego', students);
 })
 
 
