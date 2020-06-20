@@ -10,14 +10,7 @@ const port = process.env.PORT || 5001; //process.env es una variable global inje
 app.listen(port, ()=> console.log(`en puerto ${port}...`));
 
 
-const students = [
-
-{name: 'Aixa', lastname:'Halac', email:'aixa@gmail.com', phone:'111111', payment: 'credit3', bdate: '1111-11-11', country:'arg', city:'bsas', career:'frontreact'},
-
-{name: 'Juan', lastname:'Costa', email:'juan@gmail.com', phone:'111111', payment: 'cash', bdate: '1111-11-11', country:'arg', city:'bsas', career:'datascience'},
-
-{name: 'Pablo', lastname:'Fernandez', email:'pabo@gmail.com', phone:'111111', payment: 'debit', bdate: '1111-11-11', country:'arg', city:'bsas', career:'frontreact'},
-]
+const students = []
 
 
 //READ
