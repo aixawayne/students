@@ -108,7 +108,13 @@
           <p class="top-info">List of registered students</p>
 
               
-            <p>lista</p>
+          <ul>
+
+            <li v-for="student in studentList"> 
+              Name: {{student.name}} {{student.lastname}} - Email: {{student.email}} - Phone Number: {{student.phone}} -  Payment Method: {{student.payment}} - Birthd Date: {{student.bdate}} - Country: {{student.country}}  - City: {{student.city}}  - Career: {{student.career}} 
+            </li>
+
+          </ul>
             
           
           <button class='btn-success' @click="addStudent()">Add Student</button>
@@ -177,17 +183,6 @@ var app = new Vue({
       }
    },
 
-  /* displayInstallments: function() {
-      
-      this.showInstallments= true
-
-    },
-
-    hideInstallments: function() {
-      
-      this.showInstallments= false
-
-    },*/
 
     displayList: async function () {
 
