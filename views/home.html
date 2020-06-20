@@ -44,15 +44,18 @@
           </div>
           <div class="career-item">
             <div class="item" name="career">
-              <p>Career<span class="required">*</span></p>
-              <select v-model="student.selected" required>
-                <option value="FullStack">Full Stack Development</option>
-                <option value="UXUI">UX/UI Design</option>
-                <option value="DataS">Data Science</option>
-                <option value="FrontReact">Front-End with React</option>
+              <p>Payment Method<span class="required">*</span></p>
+              <select v-model="student.payment" required>
+                <option value="credit1">Credit Card - 1</option>
+                <option value="credit3">Credit Card - 3</option>
+                <option value="credit6">Credit Card - 6</option>
+                <option value="debit">Debit Card</option>
+                <option value="cash">Cash</option>
+                <option value="transfer">Transfer</option>
               </select>
               
             </div>
+            
             <div class="item">
               <p>Date of Birth<span class="required">*</span></p>
               <input type="date" name="bdate" v-model="student.bdate" required/>
@@ -69,35 +72,31 @@
               <input type="text" name="city" v-model="student.city" required/>
             </div>
           </div>
-          <div class="question">
-            <p>Payment Method<span class="required">*</span></p>
-            <div class="question-answer" name="payment">
+
+           <div class="question">
+            <p>Career<span class="required">*</span></p>
+            <div class="question-answer" name="career">
               <div>
-                <input type="radio" value="Credit" id="credit" name="status" v-model="student.picked" @click="displayInstallments()" required/>
-                <label for="credit" class="radio"><span>Credit Card</span></label>
-              </div>
-                    <div class="installments" v-show="showInstallments">
-                      <input type="radio" value="1" id="1" name="status" v-model="student.picked" required/>
-                      <label for="1" class="radio"><span>1</span></label>
-                      <input type="radio" value="3" id="3" name="status" v-model="student.picked" required/>
-                      <label for="3" class="radio"><span>3</span></label>
-                      <input type="radio" value="6" id="6" name="status" v-model="student.picked" required/>
-                      <label for="6" class="radio"><span>6</span></label>
-                    </div>
+                <input type="radio" value="Fullstack" id="fullstack" name="status" v-model="student.career"  required/>
+                <label for="fullstack" class="radio"><span>Full Stack Development</span></label>
+              </div>          
               <div>
-                <input type="radio" value="Debit" id="debit" name="status" v-model="student.picked" @click="hideInstallments()" required/>
-                <label for="debit" class="radio"><span>Debit Card</span></label>
+                <input type="radio" value="UX/UI" id="uxui" name="status" v-model="student.career" required/>
+                <label for="uxui" class="radio"><span>UX/UI Design</span></label>
               </div>
               <div>
-                <input type="radio" value="Cash" id="cash" name="status" v-model="student.picked" @click="hideInstallments()" required/>
-                <label for="cash" class="radio"><span>Cash</span></label>
+                <input type="radio" value="DataScience" id="datas" name="status" v-model="student.career" required/>
+                <label for="datas" class="radio"><span>Data Science</span></label>
               </div>
               <div>
-                <input type="radio" value="Transfer" id="transfer" name="status" v-model="student.picked" @click="hideInstallments()" required/>
-                <label for="transfer" class="radio"><span>Transfer</span></label>
+                <input type="radio" value="FrontReact" id="frontreact" name="status" v-model="student.career" required/>
+                <label for="frontreact" class="radio"><span>Front-End with React</span></label>
               </div>
             </div>
           </div>
+          
+
+
           <button class='btn-success' v-on:click="send">Send</button>
           <button class='btn-success' @click="displayList()">View List</button>
           </div>
@@ -146,8 +145,7 @@
 
     async function getList() {
       let answer = await fetch('/api/students');
-      let students = await answer.json;
-      this.studentList = students;
+      return answer.json();
     }
 
 var app = new Vue({
@@ -158,11 +156,11 @@ var app = new Vue({
       lastname: '',
       email: '',
       phone: '',
-      selected: '',
+      payment: '',
       bdate: '',
       country: '',
       city: '',
-      picked: ''
+      career: ''
     },
     studentList: [],
     showInstallments: false,
@@ -179,7 +177,7 @@ var app = new Vue({
       }
    },
 
-   displayInstallments: function() {
+  /* displayInstallments: function() {
       
       this.showInstallments= true
 
@@ -189,16 +187,17 @@ var app = new Vue({
       
       this.showInstallments= false
 
-    },
+    },*/
 
-    displayList: function() {
-      
-      this.showList= true;
-      this.showForm= false;
-      let stds = getList();
-      this.studentList = stds;
+    displayList: async function () {
 
-    },
+          this.showList = true;
+          this.showForm = false;
+          let stds = await getList();
+          console.log(stds);
+          this.studentList = stds;
+
+        },
 
     addStudent: function() {
       
