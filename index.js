@@ -36,13 +36,13 @@ app.get('/api/students', (req,res)=>{
 
 })
 
-app.get('/api/students/:id', (req,res) =>{ 
+/*app.get('/api/students/:id', (req,res) =>{ 
 
 	const student = students.find(c => c.id === parseInt(req.params.id));
 	if(!student)res.status(404).send('student not found'); 
 	res.send(student); 
 
-})
+})*/
 
 app.post('/api/students', async (req, res) => {
 	const student = req.body;

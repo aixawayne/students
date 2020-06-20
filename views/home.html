@@ -142,25 +142,32 @@
       // paso 3: enviar request.
       return fetch('/api/students', opts);
 
+    };
+
+    async function getList() {
+      let answer = await fetch('/api/students');
+      let students = await answer.json;
+      this.studentList = students;
     }
 
 var app = new Vue({
   el: '#app',
   data: {
     student: {
-    name: '',
-    lastname: '',
-    email: '',
-    phone: '',
-    selected: '',
-    bdate: '',
-    country: '',
-    city: '',
-    picked: ''
+      name: '',
+      lastname: '',
+      email: '',
+      phone: '',
+      selected: '',
+      bdate: '',
+      country: '',
+      city: '',
+      picked: ''
     },
-     showInstallments: false,
-     showList: false,
-     showForm: true 
+    studentList: [],
+    showInstallments: false,
+    showList: false,
+    showForm: true 
   },
 
   methods: {
@@ -186,17 +193,21 @@ var app = new Vue({
 
     displayList: function() {
       
-      this.showList= true,
-      this.showForm= false
+      this.showList= true;
+      this.showForm= false;
+      let stds = getList();
+      this.studentList = stds;
 
     },
 
     addStudent: function() {
       
-      this.showList= false,
+      this.showList= false;
       this.showForm= true
 
-    }
+    },
+
+
 
   }
 
