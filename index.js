@@ -1,6 +1,7 @@
 const express = require('express'); 
 const app = express(); 
 const Joi = require('joi'); 
+const db = require("./database.js");
 
 
 app.use(express.json()); //reconocer los objetos como json
