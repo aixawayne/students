@@ -24,11 +24,26 @@ app.get('/', (req,res) =>{
 
 
 
-app.get('/api/students', (req,res)=>{ 
+// app.get('/api/students', (req,res)=>{ 
 
-	res.send(students);
+// 	res.send(students);
 
-})
+// })
+
+app.get("/api/students", (req, res, next) => {
+    var sql = "select * from students"
+    var params = []
+    db.all(sql, params, (err, rows) => {
+        if (err) {
+          res.status(400).json({"error":err.message});
+          return;
+        }
+        res.json({
+            "message":"success",
+            "data":rows
+        })
+      });
+});
 
 /*app.get('/api/students/:id', (req,res) =>{ 
 
